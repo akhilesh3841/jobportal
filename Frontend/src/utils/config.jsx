@@ -1,1 +1,1 @@
-export const BASE_URL="https://jobportalserver-seven.vercel.app/"
+export const BASE_URL="https://jobportalserver-two.vercel.app/"
