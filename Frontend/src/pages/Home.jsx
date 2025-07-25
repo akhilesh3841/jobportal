@@ -80,7 +80,7 @@ const Home = () => {
           
           <motion.div variants={itemVariants}>
             <MotionLink
-              to="/login"
+              to="/alljobs"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="group px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 rounded-xl text-white font-semibold text-lg transition-all duration-300 shadow-xl flex items-center"

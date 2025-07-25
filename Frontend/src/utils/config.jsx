@@ -1,1 +1,1 @@
-export const BASE_URL="https://jobportalserver-sigma.vercel.app"
+export const BASE_URL="https://jobportal-phi-blue.vercel.app"
