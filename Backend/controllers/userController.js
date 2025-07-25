@@ -64,9 +64,13 @@ export const register = async (req, res) => {
     const saveuser = await userData.save();
     const token = await saveuser.getJWTToken();
 
-    res.cookie("token", token, {
-      expires: new Date(Date.now() + 8 * 3600000),
-    });
+ res.cookie("token", token, {
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  expires: new Date(Date.now() + 8 * 3600000),
+});
+
     res.status(201).json({
       message: "User registered successfully.",
       data: saveuser,
@@ -122,8 +126,12 @@ export const login = async (req, res) => {
 
     // Step 6: Set cookie
     res.cookie("token", token, {
-      expires: new Date(Date.now() + 8 * 3600000),
-    });
+  httpOnly: true,
+  secure: true,
+  sameSite: "None",
+  expires: new Date(Date.now() + 8 * 3600000),
+});
+
     // Step 7: Send success response
     res.status(200).json({
       message: "Login successful.",
@@ -138,21 +146,22 @@ export const login = async (req, res) => {
   }
 };
 
-
-
-export const logout=async(req,res) =>{
+export const logout = async (req, res) => {
   try {
-    res.cookie("token",null,{
-      expires:new Date(Date.now()),
-      httpOnly:true,
-    })
+    res.cookie("token", "", {
+      expires: new Date(0),
+      httpOnly: true,
+      secure: true,         // ✅ required for HTTPS (Vercel)
+      sameSite: "None",     // ✅ required for cross-site cookie
+    });
     res.status(200).json({
-            message:"Logged out successfully"
-        })
+      message: "Logged out successfully",
+    });
   } catch (error) {
-      res.status(500).json({message:error.message});     
+    res.status(500).json({ message: error.message });
   }
-}
+};
+
 
 
 
