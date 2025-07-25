@@ -1,1 +1,1 @@
-export const BASE_URL="http://localhost:5000"
+export const BASE_URL="https://vercel.com/akhileshs-projects-a76769c2/jobportalserver"
